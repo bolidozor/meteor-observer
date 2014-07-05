@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/delete_selected"
+          android:icon="@android:drawable/ic_menu_delete"
+          android:title="@string/delete_selected"/>
+    <item android:id="@+id/upload_selected"
+          android:icon="@android:drawable/ic_menu_upload"
+          android:title="@string/upload_selected" />
+    <item android:id="@+id/select_all"
+          android:title="@string/select_all" />
+</menu>
