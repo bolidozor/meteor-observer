@@ -145,12 +145,13 @@ space.astro.cz#</dia:string>
         <dia:point val="29.175,22.3812"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="25.6063,20.8075;32.7438,23.955"/>
+        <dia:rectangle val="25.6062,20.3794;32.7624,24.383"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
             <dia:string>#Aggregation Server
+meteor1.astrozor.cz
 
 HTTP server
 Station Data-Uploader#</dia:string>
@@ -162,7 +163,7 @@ Station Data-Uploader#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="29.175,21.4025"/>
+            <dia:point val="29.175,20.9931"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -184,7 +185,7 @@ Station Data-Uploader#</dia:string>
         <dia:point val="34.35,22.3812"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="34.3,22.0252;42.9618,22.7489"/>
+        <dia:rectangle val="34.3,22.0252;42.9618,22.7488"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
         <dia:point val="34.35,22.3812"/>
@@ -242,7 +243,7 @@ Station Data-Uploader#</dia:string>
         <dia:composite type="text">
           <dia:attribute name="string">
             <dia:string>#Meteor-Observer
-User 1#</dia:string>
+Observer 1#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -273,7 +274,7 @@ User 1#</dia:string>
         <dia:point val="1.97598,23.5788"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="1.9251,21.0973;9.66481,25.9141"/>
+        <dia:rectangle val="1.92509,21.0973;9.66481,25.9142"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="1.97598,23.5788"/>
@@ -303,7 +304,7 @@ User 1#</dia:string>
         <dia:composite type="text">
           <dia:attribute name="string">
             <dia:string>#Meteor-Observer
-User 2#</dia:string>
+Observer 2#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -334,7 +335,7 @@ User 2#</dia:string>
         <dia:point val="11.701,29.0638"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="11.4866,26.5561;19.3528,31.4311"/>
+        <dia:rectangle val="11.4866,26.5561;19.3528,31.4312"/>
       </dia:attribute>
       <dia:attribute name="bez_points">
         <dia:point val="11.701,29.0638"/>
@@ -358,13 +359,13 @@ User 2#</dia:string>
         <dia:point val="15.501,28.9888"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="12.8035,28.215;18.1985,29.7625"/>
+        <dia:rectangle val="12.8035,28.2151;18.1985,29.7626"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
             <dia:string>#Meteor-Observer
-User X#</dia:string>
+Observer X#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -373,7 +374,7 @@ User X#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="15.501,28.81"/>
+            <dia:point val="15.501,28.8101"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -521,7 +522,7 @@ User X#</dia:string>
         <dia:point val="22.075,17.43"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="22.0563,16.8163;23.7125,17.6199"/>
+        <dia:rectangle val="22.075,16.835;23.7125,17.5825"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -554,7 +555,7 @@ User X#</dia:string>
         <dia:point val="22.6,27.715"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="22.5813,27.1013;24.2375,27.9049"/>
+        <dia:rectangle val="22.6,27.12;24.2375,27.8675"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
