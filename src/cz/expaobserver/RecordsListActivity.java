@@ -1,4 +1,4 @@
-package cz.astrozor.meteorobserver;
+package cz.expaobserver;
 
 import java.util.*;
 import android.os.*;
