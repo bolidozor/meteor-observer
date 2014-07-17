@@ -10,4 +10,5 @@
     <string name="select_all">Select all</string>
     <string name="pref_observer_id">Observer identifier</string>
     <string name="pref_observer_id_summ">Short text sent with every report</string>
+    <string name="pref_upload_server">Upload server address</string>
 </resources>

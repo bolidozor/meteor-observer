@@ -17,6 +17,7 @@ public class ObserverApplication extends Application
 		super.onCreate();
 
 		setupId();
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
 		recordStore = new RecordStore(this);
 	}

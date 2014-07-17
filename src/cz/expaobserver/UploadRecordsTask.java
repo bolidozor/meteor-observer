@@ -47,7 +47,7 @@ public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
 		dialog.show();
 	}
 
-	private Boolean uploadRecord(String observerId, Record record)
+	private Boolean uploadRecord(String serverAddr, String observerId, Record record)
 	{
 /*
 		HttpClient httpclient = new DefaultHttpClient();
@@ -86,7 +86,7 @@ public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
 		return responseString == "ACK";
 */
 		try {
-			URL url = new URL("http", "192.168.1.97", 2000, "/report"
+			URL url = new URL(serverAddr
 							+ "?time=" + record.time
 							+ "&trail_beg=" + URLEncoder.encode(record.trailBeg.toString(), "utf-8")
 							+ "&trail_end=" + URLEncoder.encode(record.trailEnd.toString(), "utf-8")
@@ -116,6 +116,7 @@ public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
 			return true;
 
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(application);
+		String serverAddr = sharedPref.getString(SettingsActivity.KEY_PREF_UPLOAD_SERVER, "");
 		String observerId = sharedPref.getString(SettingsActivity.KEY_PREF_OBSERVER_ID, "");
 		try {
 			observerId = URLEncoder.encode(observerId, "utf-8");
@@ -125,7 +126,7 @@ public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
 		{
 			Record record = records.get(i);
 
-			if (!uploadRecord(observerId, record))
+			if (!uploadRecord(serverAddr, observerId, record))
 				return false;
 
 			application.getRecordStore().deleteRecord(record);
