@@ -17,9 +17,12 @@ class ReportHandler(tornado.web.RequestHandler):
         loc_lat, loc_long = float(self.get_argument('loc_lat')), \
                             float(self.get_argument('loc_long'))
         observer_id = self.get_argument('observer_id')
+        note = self.get_argument('note', default="")
 
-        print ("%d, %f, %f, %f, %f, %f, %f, %f, %f, %s" % (time, beg_x, beg_y, beg_z, end_x, end_y, \
-                                                          end_z, loc_lat, loc_long, observer_id))
+        print ("%d, %f, %f, %f, %f, %f, %f, %f, %f, %s, %s" % (time, beg_x, beg_y, beg_z, \
+                                                               end_x, end_y, end_z, \
+                                                               loc_lat, loc_long, \
+                                                               observer_id, note)) # TODO
 
         self.write("ACK")
 

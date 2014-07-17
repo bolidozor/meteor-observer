@@ -5,6 +5,7 @@ import android.os.*;
 import android.app.*;
 import android.view.*;
 import android.widget.*;
+import android.content.*;
 
 public class RecordsListActivity extends ListActivity {
 	private class SelectableArrayAdapter extends ArrayAdapter<Record>
@@ -120,6 +121,29 @@ public class RecordsListActivity extends ListActivity {
 				};
 
 				new UploadRecordsTask(this, listener, records).execute();
+
+				return true;
+			case R.id.add_note_to_selected:
+				AlertDialog.Builder alert = new AlertDialog.Builder(this);
+				alert.setTitle(getResources().getString(R.string.note));
+
+				final EditText input = new EditText(this);
+				alert.setView(input);
+				alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int whichButton) {
+						List<Record> records = adapter.getSelectedRecords();
+						String note = input.getText().toString();
+
+						for (Record record : records) {
+							record.note = note;
+							recordStore.updateRecord(record);
+						}
+
+						adapter.notifyDataSetChanged();
+					}
+				});
+
+				alert.show();
 
 				return true;
 			case R.id.select_all:

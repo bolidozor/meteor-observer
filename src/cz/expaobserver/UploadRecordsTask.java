@@ -92,7 +92,9 @@ public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
 							+ "&trail_end=" + URLEncoder.encode(record.trailEnd.toString(), "utf-8")
 							+ "&loc_lat=" + record.locLat
 							+ "&loc_long=" + record.locLong
-							+ "&observer_id=" + observerId);
+							+ "&observer_id=" + observerId
+							+ (record.note == null ? ""
+								: ("&note=" + URLEncoder.encode(record.note, "utf-8"))));
 
 			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 			InputStream in = new BufferedInputStream(connection.getInputStream());

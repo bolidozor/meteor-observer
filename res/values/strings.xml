@@ -7,6 +7,8 @@
     <string name="records_list">Records</string>
     <string name="delete_selected">Delete selected</string>
     <string name="upload_selected">Upload selected</string>
+    <string name="add_note_to_selected">Add a note to selected</string>
+    <string name="note">Note</string>
     <string name="select_all">Select all</string>
     <string name="pref_observer_id">Observer identifier</string>
     <string name="pref_observer_id_summ">Short text sent with every report</string>

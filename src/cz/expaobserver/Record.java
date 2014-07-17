@@ -25,7 +25,8 @@ public class Record
 	{
 		return ((String) android.text.format.DateFormat.format("yyyy-MM-dd kk:mm:ss",
 																new java.util.Date(time)))
-				+ "\nStart: " + getAngles(trailBeg) + "\nEnd: " + getAngles(trailEnd);
+				+ "\nStart: " + getAngles(trailBeg) + "\nEnd: " + getAngles(trailEnd)
+				+ (note == null ? "" : "\n" + note);
 	}
 
 	public long id;
@@ -34,4 +35,5 @@ public class Record
 	public Vector3 trailEnd;
 	public double locLat;
 	public double locLong;
+	public String note;
 }

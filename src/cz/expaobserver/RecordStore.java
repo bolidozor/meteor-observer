@@ -28,6 +28,7 @@ public class RecordStore extends SQLiteOpenHelper
 	private static final String KEY_TRAIL_END_Z = "trail_end_z";
 	private static final String KEY_LOC_LAT = "loc_lat";
 	private static final String KEY_LOC_LONG = "loc_long";
+	private static final String KEY_NOTE = "note";
 
 	public RecordStore(Context context)
 	{
@@ -46,7 +47,8 @@ public class RecordStore extends SQLiteOpenHelper
 				+ KEY_TRAIL_END_Y + " REAL,"
 				+ KEY_TRAIL_END_Z + " REAL,"
 				+ KEY_LOC_LAT + " REAL,"
-				+ KEY_LOC_LONG + " REAL" + ")";
+				+ KEY_LOC_LONG + " REAL,"
+				+ KEY_NOTE + " TEXT" + ")";
 		db.execSQL(CREATE_RECORDS_TABLE);
 	}
 
@@ -74,6 +76,7 @@ public class RecordStore extends SQLiteOpenHelper
 									cursor.getFloat(7));
 		record.locLat = cursor.getDouble(8);
 		record.locLong = cursor.getDouble(9);
+		record.note = cursor.getString(10);
 
 		return record;
 	}
@@ -91,6 +94,7 @@ public class RecordStore extends SQLiteOpenHelper
 		values.put(KEY_TRAIL_END_Z, record.trailEnd.z);
 		values.put(KEY_LOC_LAT, record.locLat);
 		values.put(KEY_LOC_LONG, record.locLong);
+		values.put(KEY_NOTE, record.note);
 
 		return values;
 	}

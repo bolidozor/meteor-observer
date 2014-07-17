@@ -6,6 +6,9 @@
     <item android:id="@+id/upload_selected"
           android:icon="@android:drawable/ic_menu_upload"
           android:title="@string/upload_selected" />
+    <item android:id="@+id/add_note_to_selected"
+    	  android:icon="@android:drawable/ic_menu_edit"
+    	  android:title="@string/add_note_to_selected" />
     <item android:id="@+id/select_all"
           android:title="@string/select_all" />
 </menu>
