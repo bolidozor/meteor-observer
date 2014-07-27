@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">EXPA Observer</string>
+    <string name="app_name">Expa Observer</string>
     <string name="show_records">Show records</string>
     <string name="gps_settings">GPS settings</string>
     <string name="settings">Settings</string>

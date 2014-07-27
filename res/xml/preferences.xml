@@ -7,5 +7,5 @@
     <EditTextPreference
     	android:key="pref_upload_server"
     	android:title="@string/pref_upload_server"
-    	android:defaultValue="http://meteor1.astozor.cz:3003/report" />
+    	android:defaultValue="http://meteor1.astrozor.cz:3003/report" />
 </PreferenceScreen>
