@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="material_grey_800">#424242</color>
+  <color name="material_grey_900">#212121</color>
+  <color name="material_red_a700">#D50000</color>
+  <color name="material_red_900">#BF360C</color>
+  <color name="material_black_100">#000000</color>
+  <color name="material_black_87">#DD000000</color>
+  <color name="material_black_54">#89000000</color>
+  <color name="material_black_26">#42000000</color>
+  <color name="material_black_12">#1E000000</color>
+  <color name="material_white_100">#FFFFFFFF</color>
+  <color name="material_white_70">#B2FFFFFF</color>
+  <color name="material_white_30">#4CFFFFFF</color>
+  <color name="material_white_12">#1EFFFFFF</color>
+</resources>

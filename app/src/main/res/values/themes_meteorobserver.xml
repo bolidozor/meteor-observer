@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="Base.Theme.MeteorObserver" parent="Theme.AppCompat">
+    <!--<item name="colorPrimary">@color/material_black_100</item>-->
+    <!--<item name="colorPrimaryDark">@color/material_black_100</item>-->
+    <!--<item name="colorAccent">@color/material_red_a700</item>-->
+    <!--<item name="colorControlNormal">@color/material_red_a700</item>-->
+    <item name="android:colorControlNormal" tools:ignore="NewApi">?colorControlNormal</item>
+    <!--<item name="android:textColorPrimary">@color/material_white_70</item>-->
+    <!--<item name="android:textColorSecondary">@color/material_white_30</item>-->
+    <!--<item name="android:textColorTertiary">@color/material_white_30</item>-->
+    <!--<item name="android:windowBackground">@color/material_black_100</item>-->
+  </style>
+
+  <style name="Theme.MeteorObserver.Red">
+    <item name="colorPrimary">@color/material_black_100</item>
+    <item name="colorPrimaryDark">@color/material_black_100</item>
+    <item name="colorAccent">@color/material_red_a700</item>
+    <item name="colorControlNormal">@color/material_red_a700</item>
+    <item name="android:textColorPrimary">@color/material_red_a700</item>
+    <item name="android:textColorSecondary">@color/material_red_a700</item>
+    <item name="android:textColorTertiary">@color/material_red_a700</item>
+    <item name="android:windowBackground">@color/material_black_100</item>
+  </style>
+
+  <style name="Theme.MeteorObserver" parent="Base.Theme.MeteorObserver">
+
+    <item name="android:editTextStyle">@style/EditTextMeteorObserver</item>
+
+    <item name="android:textColorHighlight">#99d50000</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewMeteorObserver</item>
+
+    <item name="android:checkboxStyle">@style/CheckBoxMeteorObserver</item>
+
+    <item name="android:radioButtonStyle">@style/RadioButtonMeteorObserver</item>
+
+    <item name="android:buttonStyle">@style/ButtonMeteorObserver</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonMeteorObserver</item>
+
+    <item name="android:spinnerStyle">@style/SpinnerMeteorObserver</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemMeteorObserver</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarMeteorObserver</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarMeteorObserver</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarMeteorObserver</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigMeteorObserver</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallMeteorObserver</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleMeteorObserver</item>
+
+    <item name="android:listViewStyle">@style/ListViewMeteorObserver</item>
+
+    <item name="android:listViewWhiteStyle">@style/ListViewMeteorObserver.White</item>
+
+    <item name="android:spinnerItemStyle">@style/SpinnerItemMeteorObserver</item>
+
+    <item name="android:textSelectHandleLeft">@drawable/meteorobserver_text_select_handle_left
+    </item>
+    <item name="android:textSelectHandleRight">@drawable/meteorobserver_text_select_handle_right
+    </item>
+    <item name="android:textSelectHandle">@drawable/meteorobserver_text_select_handle_middle</item>
+
+  </style>
+
+</resources>

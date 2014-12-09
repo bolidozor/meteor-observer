@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="Theme.MeteorObserver" parent="Base.Theme.MeteorObserver">
+
+    <item name="android:editTextBackground">@drawable/meteorobserver_edit_text_holo_dark</item>
+
+    <item name="android:textColorHighlight">#99d50000</item>
+    <item name="android:textSelectHandleLeft">@drawable/meteorobserver_text_select_handle_left
+    </item>
+    <item name="android:textSelectHandleRight">@drawable/meteorobserver_text_select_handle_right
+    </item>
+    <item name="android:textSelectHandle">@drawable/meteorobserver_text_select_handle_middle</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewMeteorObserver</item>
+
+    <item name="android:listChoiceIndicatorMultiple">@drawable/meteorobserver_btn_check_holo_dark
+    </item>
+
+    <item name="android:listChoiceIndicatorSingle">@drawable/meteorobserver_btn_radio_holo_dark
+    </item>
+
+    <item name="android:buttonStyle">@style/ButtonMeteorObserver</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonMeteorObserver</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerMeteorObserver</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarMeteorObserver</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarMeteorObserver</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarMeteorObserver</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigMeteorObserver</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallMeteorObserver</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleMeteorObserver</item>
+
+    <item name="android:listChoiceBackgroundIndicator">
+      @drawable/meteorobserver_list_selector_holo_dark
+    </item>
+
+    <item name="android:activatedBackgroundIndicator">
+      @drawable/meteorobserver_activated_background_holo_dark
+    </item>
+
+    <item name="android:fastScrollThumbDrawable">@drawable/meteorobserver_fastscroll_thumb_holo
+    </item>
+
+  </style>
+
+</resources>

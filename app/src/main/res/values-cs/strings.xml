@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- action bar - navigation -->
+  <string name="mo_action_show_records">Zobrazit záznamy</string>
+  <string name="mo_action_gps_settings">Nastavení GPS</string>
+  <string name="mo_action_settings">Nastavení</string>
+  <string name="mo_action_records_list">Záznamy</string>
+  <!-- action bar - action mode -->
+  <string name="mo_action_delete_selected">Odstranit vybrané</string>
+  <string name="mo_action_upload_selected">Nahrát vybrané</string>
+  <string name="mo_action_add_note_to_selected">Přidat poznámku k vybraným</string>
+  <string name="mo_action_select_all">Vybrat vše</string>
+  <string name="mo_action_dim_screen">Ztlumit obrazovku</string>
+  <!-- titles -->
+  <string name="mo_note">Poznámka</string>
+  <string name="mo_orientation">Orientace</string>
+  <string name="mo_time">Čas</string>
+  <string name="mo_location">Poloha</string>
+  <string name="mo_unknown">Neurčeno</string>
+  <!-- more -->
+  <string name="mo_empty_list">Žádná data.</string>
+  <!-- instructions -->
+  <string name="mo_instruction_init">Až uvidíš meteor, otoč telefon displejem dolů. Uslyšíš pípnutí.</string>
+  <string name="mo_instruction_point_to_start">Namiř telefon na začátek stopy.</string>
+  <string name="mo_instruction_point_to_end">Namiř telefon na konec stopy.</string>
+  <!-- preferences -->
+  <string name="pref_observer_id_title">ID pozorovatele</string>
+  <string name="pref_observer_id_summary">Krátký text odeslaný s každým hlášením</string>
+  <string name="pref_upload_server_title">Adresa serveru</string>
+</resources>

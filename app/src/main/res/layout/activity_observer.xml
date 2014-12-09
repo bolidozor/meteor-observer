@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/material_horizontal_margin"
+    android:paddingRight="@dimen/material_horizontal_margin"
+    android:paddingTop="@dimen/material_unit_double"
+    android:paddingBottom="@dimen/material_unit_double"
+    tools:context=".activities.ObserverActivity">
+
+  <TextView
+      android:id="@+id/ori_desc"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:text="@string/mo_orientation"
+      android:textColor="#cc0000"
+      android:textSize="18sp"/>
+
+  <TextView
+      android:id="@+id/ori"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentEnd="true"
+      android:textColor="#cc0000"
+      android:textSize="18sp"/>
+
+  <TextView
+      android:id="@+id/time_desc"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_below="@id/ori_desc"
+      android:text="@string/mo_time"
+      android:textColor="#cc0000"
+      android:textSize="18sp"/>
+
+  <TextView
+      android:id="@+id/time"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentEnd="true"
+      android:layout_below="@id/ori_desc"
+      android:textColor="#cc0000"
+      android:textSize="18sp"/>
+
+  <TextView
+      android:id="@+id/loc_desc"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_alignParentStart="true"
+      android:layout_below="@id/time_desc"
+      android:text="@string/mo_location"
+      android:textColor="#cc0000"
+      android:textSize="18sp"/>
+
+  <TextView
+      android:id="@+id/loc"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_alignParentEnd="true"
+      android:layout_below="@id/time_desc"
+      android:text="@string/mo_unknown"
+      android:textColor="#cc0000"
+      android:textSize="18sp"/>
+
+  <TextView
+      android:id="@+id/instruct"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:layout_marginBottom="@dimen/abc_action_bar_default_height_material"
+      android:gravity="center"
+      tools:text="@string/mo_instruction_init"
+      android:textColor="#cc0000"
+      android:textSize="30sp"/>
+
+</RelativeLayout>

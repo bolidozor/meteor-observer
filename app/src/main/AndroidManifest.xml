@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cz.expaobserver">
+
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+
+  <uses-feature
+      android:name="android.hardware.sensor.accelerometer"
+      android:required="true"/>
+  <uses-feature
+      android:name="android.hardware.sensor.compass"
+      android:required="true"/>
+
+  <application
+      android:name=".ui.ObserverApplication"
+      android:allowBackup="true"
+      android:icon="@drawable/ic_launcher2"
+      android:label="@string/app_name"
+      android:theme="@style/Theme.MeteorObserver">
+    <activity
+        android:name=".ui.ObserverActivity"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.MeteorObserver.Red">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity
+        android:name=".ui.RecordListActivity"
+        android:label="@string/mo_action_records_list"
+        android:parentActivityName=".ui.ObserverActivity">
+
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".ui.ObserverActivity"/>
+    </activity>
+    <activity
+        android:name=".ui.SettingsActivity"
+        android:label="@string/mo_action_settings"
+        android:parentActivityName=".ui.ObserverActivity">
+
+      <meta-data
+          android:name="android.support.PARENT_ACTIVITY"
+          android:value=".ui.ObserverActivity"/>
+    </activity>
+  </application>
+
+</manifest>
