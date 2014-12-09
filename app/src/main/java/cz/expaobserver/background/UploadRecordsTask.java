@@ -1,5 +1,12 @@
 package cz.expaobserver.background;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.preference.PreferenceManager;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,15 +17,9 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.List;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import cz.expaobserver.ui.ObserverApplication;
-import cz.expaobserver.ui.SettingsActivity;
 import cz.expaobserver.model.Record;
+import cz.expaobserver.ui.ObserverApplication;
+import cz.expaobserver.ui.SettingsFragment;
 
 public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
 {
@@ -124,8 +125,8 @@ public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
 			return true;
 
 		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(application);
-		String serverAddr = sharedPref.getString(SettingsActivity.KEY_PREF_UPLOAD_SERVER, "");
-		String observerId = sharedPref.getString(SettingsActivity.KEY_PREF_OBSERVER_ID, "");
+		String serverAddr = sharedPref.getString(SettingsFragment.KEY_PREF_UPLOAD_SERVER, "");
+		String observerId = sharedPref.getString(SettingsFragment.KEY_PREF_OBSERVER_ID, "");
 		try {
 			observerId = URLEncoder.encode(observerId, "utf-8");
 		} catch (Exception e) {}

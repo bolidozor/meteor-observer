@@ -19,13 +19,15 @@
   <string name="mo_location">Location</string>
   <string name="mo_unknown">Unknown</string>
   <!-- more -->
-  <string name="mo_empty_list">No data.</string>
+  <string name="mo_empty_list">No data</string>
   <!-- instructions -->
   <string name="mo_instruction_init">When you see a meteor, tilt your phone over. You will hear a beep.</string>
   <string name="mo_instruction_point_to_start">Point toward the beginning of the trail.</string>
   <string name="mo_instruction_point_to_end">Point toward the end of the trail.</string>
   <!-- preferences -->
+  <string name="pref_observer_id_key" translatable="false">pref_observer_id</string>
   <string name="pref_observer_id_title">Observer ID</string>
   <string name="pref_observer_id_summary">Short text sent with every report</string>
+  <string name="pref_upload_server_id_key" translatable="false">pref_upload_server</string>
   <string name="pref_upload_server_title">Upload server address</string>
 </resources>

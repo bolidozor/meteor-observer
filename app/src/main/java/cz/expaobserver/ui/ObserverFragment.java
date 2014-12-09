@@ -13,7 +13,6 @@ import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.widget.Button;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -81,8 +80,6 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
   }
 
   public ObserverFragment() {
-    Button b = new Button(getActivity());
-    b.
   }
 
   @Override

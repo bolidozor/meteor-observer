@@ -46,11 +46,11 @@ public class ObserverApplication extends Application {
 
   private void setupId() {
     SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-    String observerId = sharedPrefs.getString(SettingsActivity.KEY_PREF_OBSERVER_ID, null);
+    String observerId = sharedPrefs.getString(SettingsFragment.KEY_PREF_OBSERVER_ID, null);
 
     if (observerId == null) {
       observerId = "unnamed-" + UUID.randomUUID().toString();
-      sharedPrefs.edit().putString(SettingsActivity.KEY_PREF_OBSERVER_ID, observerId).commit();
+      sharedPrefs.edit().putString(SettingsFragment.KEY_PREF_OBSERVER_ID, observerId).commit();
     }
   }
 

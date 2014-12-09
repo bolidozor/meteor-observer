@@ -11,8 +11,24 @@ android {
     // SS-X-YY-ZZZ, S: minSdk, X: major, Y: minor, Z: build
     versionCode 9100003
     versionName "1.0.3"
-//    resConfigs "cs", "en"
-//    resConfigs "nodpi", "hdpi", "xhdpi", "xxhdpi"
+    resConfigs "cs", "en"
+    resConfigs "nodpi", "hdpi", "xhdpi", "xxhdpi"
+  }
+
+  signingConfigs {
+    release {
+      def keyPropsFile = file('signing.properties')
+      assert keyPropsFile.exists(), 'No signing.properties file present.'
+
+      def Properties keyProps = new Properties()
+      keyProps.load(new FileInputStream(keyPropsFile))
+
+      assert keyProps['STORE_FILE'] && keyProps['STORE_PASSWORD'] && keyProps['KEY_ALIAS'] && keyProps['KEY_PASSWORD'], 'Incomplete signing.properties file present.'
+      storeFile file(keyProps['STORE_FILE'])
+      storePassword keyProps['STORE_PASSWORD']
+      keyAlias keyProps['KEY_ALIAS']
+      keyPassword keyProps['KEY_PASSWORD']
+    }
   }
 
   buildTypes {
@@ -20,29 +36,10 @@ android {
       versionNameSuffix '-debug'
     }
     release {
-//      shrinkResources true
+      shrinkResources true
       minifyEnabled true
       proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
-    }
-  }
-
-  signingConfigs {
-    release {
-      def keyPropsFile = file('signing.properties')
-      if (keyPropsFile.exists()) {
-        def Properties keyProps = new Properties()
-        keyProps.load(new FileInputStream(keyPropsFile))
-        if (keyProps['STORE_FILE'] && keyProps['STORE_PASSWORD'] && keyProps['KEY_ALIAS'] && keyProps['KEY_PASSWORD']) {
-          storeFile file(keyProps['STORE_FILE'])
-          storePassword keyProps['STORE_PASSWORD']
-          keyAlias keyProps['KEY_ALIAS']
-          keyPassword keyProps['KEY_PASSWORD']
-        } else {
-          println 'Incomplete signing.properties file present.'
-        }
-      } else {
-        println 'No signing.properties file present.'
-      }
+      signingConfig signingConfigs.release
     }
   }
 
@@ -50,12 +47,15 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_7
     targetCompatibility JavaVersion.VERSION_1_7
   }
+  lintOptions {
+    abortOnError false
+  }
 }
 
 dependencies {
   compile 'com.android.support:support-v4:21.+'
   compile 'com.android.support:appcompat-v7:21.+'
-//  compile 'com.github.machinarius:preferencefragment:+'
+  //  compile 'com.github.machinarius:preferencefragment:+'
   compile('com.android.support:support-v4-preferencefragment:1.+@aar') {
     exclude module: 'support-v4'
   }

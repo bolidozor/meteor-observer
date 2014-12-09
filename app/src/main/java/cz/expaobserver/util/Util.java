@@ -1,9 +1,6 @@
 package cz.expaobserver.util;
 
-import android.animation.LayoutTransition;
 import android.annotation.TargetApi;
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -21,9 +18,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.EdgeEffect;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -249,131 +243,7 @@ public class Util {
     }
   }
 
-  public static class Toolbar {
-    private static final Class<?> CLS_TOOLBAR = android.support.v7.widget.Toolbar.class;
-    private static final Field FIELD_COLLAPSE_ICON;
-    private static final Field FIELD_COLLAPSE_BUTTON_VIEW;
-//    private static final Field FIELD_TINT_MANAGER;
-
-    static {
-      Field fieldCollapseIcon = null;
-      Field fieldCollapseButtonView = null;
-//      Field fieldTintManager = null;
-
-      for (Field f : CLS_TOOLBAR.getDeclaredFields()) {
-        switch (f.getName()) {
-          case "mCollapseIcon":
-            fieldCollapseIcon = f;
-            break;
-          case "mCollapseButtonView":
-            fieldCollapseButtonView = f;
-            break;
-//          case "mTintManager":
-//            fieldTintManager = f;
-//            break;
-        }
-      }
-
-      FIELD_COLLAPSE_ICON = fieldCollapseIcon;
-      FIELD_COLLAPSE_BUTTON_VIEW = fieldCollapseButtonView;
-//      FIELD_TINT_MANAGER = fieldTintManager;
-
-      if (FIELD_COLLAPSE_ICON != null) {
-        FIELD_COLLAPSE_ICON.setAccessible(true);
-      }
-      if (FIELD_COLLAPSE_BUTTON_VIEW != null) {
-        FIELD_COLLAPSE_BUTTON_VIEW.setAccessible(true);
-      }
-//      if (FIELD_TINT_MANAGER != null) {
-//        FIELD_TINT_MANAGER.setAccessible(true);
-//      }
-    }
-
-    private Toolbar() {
-    }
-
-    public static void setSearchViewLayoutTransition(android.widget.SearchView view) {
-      int searchBarId = view.getContext().getResources().getIdentifier("android:id/search_bar", null, null);
-      LinearLayout searchBar = (LinearLayout) view.findViewById(searchBarId);
-      searchBar.setLayoutTransition(new LayoutTransition());
-    }
-
-    public static void setSearchViewLayoutTransition(android.support.v7.widget.SearchView view) {
-      LinearLayout searchBar = (LinearLayout) view.findViewById(R.id.search_bar);
-      searchBar.setLayoutTransition(new LayoutTransition());
-    }
-
-    /**
-     * Support Toolbar (21.0.1) does not respect {@code colorControlNormal} color and paints the
-     * "up" button always white. This method fixes that behavior. Applies only to
-     * {@link android.os.Build.VERSION_CODES#LOLLIPOP}, maybe higher.
-     *
-     * @param toolbar
-     */
-    public static void fixToolbar(android.support.v7.widget.Toolbar toolbar) {
-      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        try {
-//        TintManager tm = (TintManager) FIELD_TINT_MANAGER.get(toolbar);
-//        Drawable d = (Drawable) FIELD_COLLAPSE_ICON.get(toolbar);
-          ImageButton ib = (ImageButton) FIELD_COLLAPSE_BUTTON_VIEW.get(toolbar);
-
-          Drawable d = Util.Material.getControlDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha, toolbar.getContext());
-          FIELD_COLLAPSE_ICON.set(toolbar, d);
-          ib.setImageDrawable(d);
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-      }
-    }
-
-    /**
-     * Provides native ActionBar (e.g. in PreferenceActivity which is only native) with a Material
-     * back button.
-     * <p/>
-     * The {@code android:actionBarStyle} must specify {@code colorControlNormal} which will define
-     * icon color.
-     *
-     * @param activity
-     * @param back Optional back button drawable. Defaults to back arrow. Will be colored.
-     */
-    public static void fixActionBar(Activity activity, Drawable back) {
-      ActionBar ab = activity.getActionBar();
-      if (ab == null) return;
-
-      if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-        Drawable d;
-        if (back == null) {
-          d = Util.Material.getControlDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha, activity.getActionBar().getThemedContext());
-        } else {
-          d = Util.Material.getControlDrawable(back, activity.getActionBar().getThemedContext());
-        }
-
-        int p = activity.getResources().getDimensionPixelOffset(R.dimen.material_unit);
-        int width = activity.getResources().getDimensionPixelSize(R.dimen.abc_action_button_min_width_material) + p;
-        int height = activity.getResources().getDimensionPixelSize(R.dimen.abc_action_button_min_height_material);
-
-        ImageView image;
-        try {
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            ViewGroup home = (ViewGroup) activity.findViewById(android.R.id.home).getParent();
-            image = ((ImageView) home.getChildAt(0));
-          } else {
-            image = ((ImageView) activity.findViewById(R.id.up));
-          }
-          image.setScaleType(ImageView.ScaleType.CENTER);
-          image.setMinimumWidth(width);
-          image.setMinimumHeight(height);
-          image.setImageDrawable(d);
-        } catch (Exception ex) {
-          ex.printStackTrace();
-        }
-      }
-    }
-  }
-
   public static class View {
-    private static final String TAG = Util.TAG + "$" + View.class.getSimpleName();
-
     public static final float RATIO_16_BY_9 = 16 / 9f;
     public static final float RATIO_3_BY_2 = 3 / 2f;
     public static final float RATIO_4_BY_3 = 4 / 3f;
