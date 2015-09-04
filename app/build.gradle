@@ -27,6 +27,13 @@ android {
 
     signingConfigs {
         release {
+            // signing.properties file contains release key information. DO NOT COMMIT TO VCS!!!
+            // signing.properties structure:
+            // STORE_FILE=C:\\Users\\Eugen\\.android\\debug.keystore
+            // STORE_PASSWORD=android
+            // KEY_ALIAS=androiddebugkey
+            // KEY_PASSWORD=android
+
             def keyPropsFile = file('signing.properties')
             assert keyPropsFile.exists(), 'No signing.properties file present.'
 
