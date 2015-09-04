@@ -25,7 +25,6 @@ import cz.expaobserver.R;
 import cz.expaobserver.background.UploadRecordsTask;
 import cz.expaobserver.model.Record;
 import cz.expaobserver.model.RecordStore;
-import cz.expaobserver.util.Util;
 
 /**
  * Created by pechanecjr on 28. 11. 2014.
@@ -79,8 +78,8 @@ public class RecordListFragment extends ListFragment {
 
         inflater.inflate(R.menu.record_list_actions, menu);
 
-        // TODO tint with toolbar context
-        Util.Material.tintMenu(menu, getActivity());
+//        // TODO tint with toolbar context
+//        Util.Material.tintMenu(menu, getActivity());
     }
 
     @Override

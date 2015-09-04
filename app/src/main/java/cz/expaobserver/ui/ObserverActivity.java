@@ -24,6 +24,7 @@ import cz.expaobserver.R;
 import cz.expaobserver.model.Vector3;
 import cz.expaobserver.util.ActivityUtils;
 import cz.expaobserver.util.DateUtils;
+import cz.expaobserver.util.Util;
 
 public class ObserverActivity extends AppCompatActivity implements ObserverFragment.Callbacks,
     ConfirmIntentDialogFragment.ConfirmIntentClient {
@@ -102,11 +103,10 @@ public class ObserverActivity extends AppCompatActivity implements ObserverFragm
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(final Menu menu) {
         super.onPrepareOptionsMenu(menu);
-
 //    MenuItemCompat.setShowAsAction(menu.findItem(R.id.dim_screen), MenuItemCompat.SHOW_AS_ACTION_ALWAYS);
-
+        Util.Material.tintMenu(menu, getSupportActionBar().getThemedContext());
         return true;
     }
 

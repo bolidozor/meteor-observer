@@ -4,9 +4,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import cz.expaobserver.util.ActivityUtils;
+import cz.expaobserver.util.Util;
 
 public class SettingsActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
@@ -20,6 +22,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(android.R.id.content, SettingsFragment.newInstance()).commit();
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(final Menu menu) {
+        super.onPrepareOptionsMenu(menu);
+        Util.Material.tintMenu(menu, getSupportActionBar().getThemedContext());
+        return true;
     }
 
     @Override
