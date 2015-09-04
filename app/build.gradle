@@ -8,11 +8,21 @@ android {
         applicationId "cz.expaobserver"
         minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
         targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+
+        // Min SDKs:
+        // Gingerbread (9 or 10)         -> no prefix
+        // Ice Cream Sandwich (14 or 15) -> 1
+        // Jellybean (16)                -> 2
+        // Jellybean r2 (17)             -> 3
+        // ???                           -> 4
+        // Lollipop (21)                 -> 5
+        // Marshmallow (23)              -> 6
+
         // SS-XX-YY-ZZ, S: minSdk, X: major, Y: minor, Z: build
-        versionCode 9010004
-        versionName "1.0.4"
+        versionCode 10100
+        versionName "1.1.0"
         resConfigs "cs", "en"
-        resConfigs "nodpi", "hdpi", "xhdpi", "xxhdpi"
+        resConfigs "nodpi", "mdpi", "hdpi", "xhdpi", "xxhdpi"
     }
 
     signingConfigs {
@@ -50,7 +60,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
     lintOptions {
-        abortOnError false
+        abortOnError true
         disable 'InvalidPackage'
     }
     packagingOptions {
