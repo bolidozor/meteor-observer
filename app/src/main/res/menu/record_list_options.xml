@@ -3,25 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-  <!--<item-->
-  <!--android:id="@+id/delete_selected"-->
-  <!--android:icon="@drawable/ic_action_delete"-->
-  <!--android:title="@string/mo_action_delete_selected"-->
-  <!--app:showAsAction="always"/>-->
-  <!--<item-->
-  <!--android:id="@+id/upload_selected"-->
-  <!--android:icon="@drawable/ic_action_file_upload"-->
-  <!--android:title="@string/mo_action_upload_selected"-->
-  <!--app:showAsAction="always"/>-->
-  <!--<item-->
-  <!--android:id="@+id/add_note_to_selected"-->
-  <!--android:icon="@drawable/ic_action_label_outline"-->
-  <!--android:title="@string/mo_action_add_note_to_selected"-->
-  <!--app:showAsAction="always"/>-->
-  <item
-      android:id="@+id/select_all"
-      android:icon="@drawable/ic_action_select_all"
-      android:title="@string/mo_action_select_all"
-      app:showAsAction="always"/>
+    <!--<item-->
+    <!--android:id="@+id/delete_selected"-->
+    <!--android:icon="@drawable/ic_action_delete"-->
+    <!--android:title="@string/mo_action_delete_selected"-->
+    <!--app:showAsAction="always"/>-->
+    <!--<item-->
+    <!--android:id="@+id/upload_selected"-->
+    <!--android:icon="@drawable/ic_action_file_upload"-->
+    <!--android:title="@string/mo_action_upload_selected"-->
+    <!--app:showAsAction="always"/>-->
+    <!--<item-->
+    <!--android:id="@+id/add_note_to_selected"-->
+    <!--android:icon="@drawable/ic_action_label_outline"-->
+    <!--android:title="@string/mo_action_add_note_to_selected"-->
+    <!--app:showAsAction="always"/>-->
+    <item
+        android:id="@+id/select_all"
+        android:icon="@drawable/ic_action_select_all"
+        android:title="@string/mo_action_select_all"
+        app:showAsAction="always"/>
 
 </menu>

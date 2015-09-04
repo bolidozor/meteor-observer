@@ -21,43 +21,41 @@ import cz.expaobserver.model.Record;
 import cz.expaobserver.ui.ObserverApplication;
 import cz.expaobserver.ui.SettingsFragment;
 
-public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
-{
-	public interface Listener {
-		public void onFinish();
-	};
+public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean> {
+    public interface Listener {
+        public void onFinish();
+    }
 
-	private final Activity activity;
-	private final ObserverApplication application;
-	private final Listener listener;
-	private List<Record> records;
-	private ProgressDialog dialog;
-	private String errorStr;
+    ;
 
-	public UploadRecordsTask(Activity activity, Listener listener,
-								List<Record> records)
-	{
-		super();
-		this.activity = activity;
-		this.application = (ObserverApplication) activity.getApplication();
-		this.listener = listener;
-		this.records = records;
-	}
+    private final Activity activity;
+    private final ObserverApplication application;
+    private final Listener listener;
+    private List<Record> records;
+    private ProgressDialog dialog;
+    private String errorStr;
 
-	protected void onPreExecute()
-	{
-		dialog = new ProgressDialog(activity);
-		dialog.setTitle("Uploading records...");
-		dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-		dialog.setMax(records.size());
-		dialog.setProgress(0);
-		dialog.show();
-	}
+    public UploadRecordsTask(Activity activity, Listener listener,
+                             List<Record> records) {
+        super();
+        this.activity = activity;
+        this.application = (ObserverApplication) activity.getApplication();
+        this.listener = listener;
+        this.records = records;
+    }
 
-	private Boolean uploadRecord(String serverAddr, String observerId, Record record)
-	{
+    protected void onPreExecute() {
+        dialog = new ProgressDialog(activity);
+        dialog.setTitle("Uploading records...");
+        dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+        dialog.setMax(records.size());
+        dialog.setProgress(0);
+        dialog.show();
+    }
+
+    private Boolean uploadRecord(String serverAddr, String observerId, Record record) {
 /*
-		HttpClient httpclient = new DefaultHttpClient();
+        HttpClient httpclient = new DefaultHttpClient();
 		HttpResponse response;
 		String responseString = null;
 
@@ -92,76 +90,72 @@ public class UploadRecordsTask extends AsyncTask<Void, Integer, Boolean>
 		Log.d("MeterObserver", "recv: " + responseString);
 		return responseString == "ACK";
 */
-		try {
-			URL url = new URL(serverAddr
-							+ "?time=" + record.time
-							+ "&trail_beg=" + URLEncoder.encode(record.trailBeg.toString(), "utf-8")
-							+ "&trail_end=" + URLEncoder.encode(record.trailEnd.toString(), "utf-8")
-							+ "&loc_lat=" + record.locLat
-							+ "&loc_long=" + record.locLong
-							+ "&observer_id=" + observerId
-							+ (record.note == null ? ""
-								: ("&note=" + URLEncoder.encode(record.note, "utf-8"))));
+        try {
+            URL url = new URL(serverAddr
+                + "?time=" + record.time
+                + "&trail_beg=" + URLEncoder.encode(record.trailBeg.toString(), "utf-8")
+                + "&trail_end=" + URLEncoder.encode(record.trailEnd.toString(), "utf-8")
+                + "&loc_lat=" + record.locLat
+                + "&loc_long=" + record.locLong
+                + "&observer_id=" + observerId
+                + (record.note == null ? ""
+                : ("&note=" + URLEncoder.encode(record.note, "utf-8"))));
 
-			HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-			InputStream in = new BufferedInputStream(connection.getInputStream());
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            InputStream in = new BufferedInputStream(connection.getInputStream());
 
-			BufferedReader r = new BufferedReader(new InputStreamReader(in));
-			String line = r.readLine();
+            BufferedReader r = new BufferedReader(new InputStreamReader(in));
+            String line = r.readLine();
 
-			connection.disconnect();
+            connection.disconnect();
 
-			errorStr = line;
-			return line.equals("ACK");
-		} catch(IOException e) {
-			errorStr = e.toString();
-			return false;
-		}
-	}
+            errorStr = line;
+            return line.equals("ACK");
+        } catch (IOException e) {
+            errorStr = e.toString();
+            return false;
+        }
+    }
 
-	protected Boolean doInBackground(Void... arg)
-	{
-		if (records.size() == 0)
-			return true;
+    protected Boolean doInBackground(Void... arg) {
+        if (records.size() == 0)
+            return true;
 
-		SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(application);
-		String serverAddr = sharedPref.getString(SettingsFragment.KEY_PREF_UPLOAD_SERVER, "");
-		String observerId = sharedPref.getString(SettingsFragment.KEY_PREF_OBSERVER_ID, "");
-		try {
-			observerId = URLEncoder.encode(observerId, "utf-8");
-		} catch (Exception e) {}
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(application);
+        String serverAddr = sharedPref.getString(SettingsFragment.KEY_PREF_UPLOAD_SERVER, "");
+        String observerId = sharedPref.getString(SettingsFragment.KEY_PREF_OBSERVER_ID, "");
+        try {
+            observerId = URLEncoder.encode(observerId, "utf-8");
+        } catch (Exception e) {}
 
-		for (int i = 0; i < records.size(); i++)
-		{
-			Record record = records.get(i);
+        for (int i = 0; i < records.size(); i++) {
+            Record record = records.get(i);
 
-			if (!uploadRecord(serverAddr, observerId, record))
-				return false;
+            if (!uploadRecord(serverAddr, observerId, record))
+                return false;
 
-			application.getRecordStore().deleteRecord(record);
-			publishProgress(i + 1);
-		}
+            application.getRecordStore().deleteRecord(record);
+            publishProgress(i + 1);
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	protected void onProgressUpdate(Integer... progress)
-	{
-		dialog.setProgress(progress[0]);
-	}
+    protected void onProgressUpdate(Integer... progress) {
+        dialog.setProgress(progress[0]);
+    }
 
-	protected void onPostExecute(Boolean result)
-	{
-		dialog.dismiss();
+    protected void onPostExecute(Boolean result) {
+        dialog.dismiss();
 
-		if (listener != null)
-			listener.onFinish();
+        if (listener != null)
+            listener.onFinish();
 
-		if (!result) {
-			AlertDialog dialog = new AlertDialog.Builder(activity).create();
-			dialog.setTitle("Upload failed");
-			dialog.setMessage(errorStr);
-			dialog.show();
-		}
-	}
+        if (!result) {
+            AlertDialog dialog = new AlertDialog.Builder(activity).create();
+            dialog.setTitle("Upload failed");
+            dialog.setMessage(errorStr);
+            dialog.show();
+        }
+    }
 }

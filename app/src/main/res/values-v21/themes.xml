@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources>
+
+    <style name="Theme.MeteorObserver" parent="Base.Theme.MeteorObserver">
+    </style>
+
+</resources>

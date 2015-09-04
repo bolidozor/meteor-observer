@@ -2,10 +2,10 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
         android:key="@string/pref_observer_id_key"
-        android:title="@string/pref_observer_id_title"
-        android:summary="@string/pref_observer_id_summary" />
+        android:summary="@string/pref_observer_id_summary"
+        android:title="@string/pref_observer_id_title"/>
     <EditTextPreference
-    	android:key="@string/pref_upload_server_id_key"
-    	android:title="@string/pref_upload_server_title"
-    	android:defaultValue="http://meteor1.astrozor.cz:3003/report" />
+        android:defaultValue="http://meteor1.astrozor.cz:3003/report"
+        android:key="@string/pref_upload_server_id_key"
+        android:title="@string/pref_upload_server_title"/>
 </PreferenceScreen>

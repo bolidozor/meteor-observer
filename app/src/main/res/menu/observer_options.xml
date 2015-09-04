@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-      xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemes.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
       tools:context=".ui.ObserverActivity">
 
-  <item
-      android:id="@+id/dim_screen"
-      android:icon="@drawable/ic_action_brightness_low"
-      android:title="@string/mo_action_dim_screen"
-      android:orderInCategory="50"
-      app:showAsAction="ifRoom"/>
-  <!--app:actionViewClass="cz.expaobserver.ui.widget.BrightnessView"-->
-  <item
-      android:id="@+id/show_records"
-      android:icon="@drawable/ic_action_list"
-      android:title="@string/mo_action_show_records"
-      android:orderInCategory="100"
-      app:showAsAction="ifRoom"/>
-  <item
-      android:id="@+id/gps_settings"
-      android:icon="@drawable/ic_action_place"
-      android:title="@string/mo_action_gps_settings"
-      android:orderInCategory="200"
-      app:showAsAction="never"/>
-  <item
-      android:id="@+id/settings"
-      android:icon="@drawable/ic_action_settings"
-      android:title="@string/mo_action_settings"
-      android:orderInCategory="300"
-      app:showAsAction="never"/>
+    <item
+        android:id="@+id/dim_screen"
+        android:icon="@drawable/ic_action_brightness_low"
+        android:orderInCategory="50"
+        android:title="@string/mo_action_dim_screen"
+        app:showAsAction="ifRoom"/>
+    <!--app:actionViewClass="cz.expaobserver.ui.widget.BrightnessView"-->
+    <item
+        android:id="@+id/show_records"
+        android:icon="@drawable/ic_action_list"
+        android:orderInCategory="100"
+        android:title="@string/mo_action_show_records"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:id="@+id/gps_settings"
+        android:icon="@drawable/ic_action_place"
+        android:orderInCategory="200"
+        android:title="@string/mo_action_gps_settings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_action_settings"
+        android:orderInCategory="300"
+        android:title="@string/mo_action_settings"
+        app:showAsAction="never"/>
 </menu>

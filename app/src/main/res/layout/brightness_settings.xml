@@ -3,23 +3,25 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
-  <SeekBar
-      android:id="@+id/seekbar"
-      android:layout_weight="1"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content">
+    <SeekBar
+        android:id="@+id/seekbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
 
-  </SeekBar>
+    </SeekBar>
 
-  <ImageButton
-      android:id="@+id/button"
-      android:padding="@dimen/abc_action_bar_default_padding_material"
-      style="?selectableItemBackground"
-      android:src="@drawable/ic_action_brightness_auto"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"/>
+    <ImageButton
+        android:id="@+id/button"
+        style="?selectableItemBackground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/abc_action_button_min_height_material"
+        android:minWidth="@dimen/abc_action_button_min_width_material"
+        android:scaleType="center"
+        android:src="@drawable/ic_action_brightness_auto"/>
 
 </merge>

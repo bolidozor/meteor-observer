@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Base.Theme.MeteorObserver" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/material_red_500</item>
+        <item name="alertDialogTheme">@style/Theme.MeteorObserver.Dialog.Alert</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>
+
+    <style name="Theme.MeteorObserver.Red">
+        <item name="colorPrimary">@color/material_black_100</item>
+        <item name="colorPrimaryDark">@color/material_black_100</item>
+        <item name="colorAccent">@color/material_red_a700</item>
+        <item name="android:textColorPrimary">@color/material_red_a700</item>
+        <item name="android:textColorSecondary">@color/material_red_a700</item>
+        <item name="android:textColorTertiary">@color/material_red_a700</item>
+        <item name="android:windowBackground">@color/material_black_100</item>
+        <!--<item name="android:textColorHighlight">#99d50000</item>-->
+        <item name="alertDialogTheme">@style/Theme.MeteorObserver.Red.Dialog.Alert</item>
+    </style>
+
+    <style name="Theme.MeteorObserver" parent="Base.Theme.MeteorObserver">
+    </style>
+
+    <style name="Theme.MeteorObserver.Dialog.Alert" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/material_red_500</item>
+    </style>
+
+    <style name="Theme.MeteorObserver.Red.Dialog.Alert" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorPrimary">@color/material_black_100</item>
+        <item name="colorPrimaryDark">@color/material_black_100</item>
+        <item name="colorAccent">@color/material_red_a700</item>
+        <item name="android:textColorPrimary">@color/material_red_a700</item>
+        <item name="android:textColorSecondary">@color/material_red_a700</item>
+        <item name="android:textColorTertiary">@color/material_red_a700</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+    </style>
+
+</resources>

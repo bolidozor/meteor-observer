@@ -4,15 +4,12 @@ buildscript {
     jcenter()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:0.14.4'
+    classpath 'com.android.tools.build:gradle:1.4.0-beta1'
   }
 }
 
 allprojects {
   repositories {
     jcenter()
-    maven {
-      url "https://raw.github.com/kolavar/android-support-v4-preferencefragment/master/maven-repository/"
-    }
   }
 }

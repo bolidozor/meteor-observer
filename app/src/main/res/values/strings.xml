@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name" translatable="false">Expa Observer</string>
-  <!-- action bar - navigation -->
-  <string name="mo_action_show_records">Show records</string>
-  <string name="mo_action_gps_settings">GPS settings</string>
-  <string name="mo_action_settings">Settings</string>
-  <string name="mo_action_records_list">Records</string>
-  <!-- action bar - action mode -->
-  <string name="mo_action_delete_selected">Delete selected</string>
-  <string name="mo_action_upload_selected">Upload selected</string>
-  <string name="mo_action_add_note_to_selected">Add a note to selected</string>
-  <string name="mo_action_select_all">Select all</string>
-  <string name="mo_action_dim_screen">Dim screen</string>
-  <!-- titles -->
-  <string name="mo_note">Note</string>
-  <string name="mo_orientation">Orientation</string>
-  <string name="mo_time">Time</string>
-  <string name="mo_location">Location</string>
-  <string name="mo_unknown">Unknown</string>
-  <!-- more -->
-  <string name="mo_empty_list">No data</string>
-  <!-- instructions -->
-  <string name="mo_instruction_init">When you see a meteor, tilt your phone over. You will hear a beep.</string>
-  <string name="mo_instruction_point_to_start">Point toward the beginning of the trail.</string>
-  <string name="mo_instruction_point_to_end">Point toward the end of the trail.</string>
-  <!-- preferences -->
-  <string name="pref_observer_id_key" translatable="false">pref_observer_id</string>
-  <string name="pref_observer_id_title">Observer ID</string>
-  <string name="pref_observer_id_summary">Short text sent with every report</string>
-  <string name="pref_upload_server_id_key" translatable="false">pref_upload_server</string>
-  <string name="pref_upload_server_title">Upload server address</string>
+    <string name="app_name" translatable="false">Expa Observer</string>
+    <!-- action bar - navigation -->
+    <string name="mo_action_show_records">Show records</string>
+    <string name="mo_action_gps_settings">GPS settings</string>
+    <string name="mo_action_settings">Settings</string>
+    <string name="mo_action_records_list">Records</string>
+    <!-- action bar - action mode -->
+    <string name="mo_action_delete_selected">Delete selected</string>
+    <string name="mo_action_upload_selected">Upload selected</string>
+    <string name="mo_action_add_note_to_selected">Add a note to selected</string>
+    <string name="mo_action_select_all">Select all</string>
+    <string name="mo_action_dim_screen">Dim screen</string>
+    <!-- titles -->
+    <string name="mo_note">Note</string>
+    <string name="mo_orientation">Orientation</string>
+    <string name="mo_time">Time</string>
+    <string name="mo_location">Location</string>
+    <string name="mo_unknown">Unknown</string>
+    <!-- more -->
+    <string name="mo_empty_list">No data</string>
+    <!-- instructions -->
+    <string name="mo_instruction_init">When you see a meteor, tilt your phone over. You will hear a beep.</string>
+    <string name="mo_instruction_point_to_start">Point toward the beginning of the trail.</string>
+    <string name="mo_instruction_point_to_end">Point toward the end of the trail.</string>
+    <!-- preferences -->
+    <string name="pref_observer_id_key" translatable="false">pref_observer_id</string>
+    <string name="pref_observer_id_title">Observer ID</string>
+    <string name="pref_observer_id_summary">Short text sent with every report</string>
+    <string name="pref_upload_server_id_key" translatable="false">pref_upload_server</string>
+    <string name="pref_upload_server_title">Upload server address</string>
+
+    <string name="mo_confirm_intent_message">Other apps may have brighter themes. Do you want to continue now?</string>
 </resources>

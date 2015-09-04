@@ -10,8 +10,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 import cz.expaobserver.R;
 
 /**
@@ -19,45 +19,45 @@ import cz.expaobserver.R;
  */
 public class BrightnessView extends LinearLayout implements CollapsibleActionView {
 
-  @InjectView(R.id.seekbar)
-  SeekBar mSeekBar;
-  @InjectView(R.id.button)
-  ImageButton mButton;
+    @Bind(R.id.seekbar)
+    SeekBar mSeekBar;
+    @Bind(R.id.button)
+    ImageButton mButton;
 
-  public BrightnessView(Context context) {
-    this(context, null);
-  }
+    public BrightnessView(Context context) {
+        this(context, null);
+    }
 
-  public BrightnessView(Context context, AttributeSet attrs) {
-    super(context, attrs);
-    init(context, attrs, 0, 0);
-  }
+    public BrightnessView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context, attrs, 0, 0);
+    }
 
-  @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-  public BrightnessView(Context context, AttributeSet attrs, int defStyleAttr) {
-    super(context, attrs, defStyleAttr);
-    init(context, attrs, defStyleAttr, 0);
-  }
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public BrightnessView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context, attrs, defStyleAttr, 0);
+    }
 
-  @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-  public BrightnessView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-    super(context, attrs, defStyleAttr, defStyleRes);
-    init(context, attrs, defStyleAttr, defStyleRes);
-  }
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public BrightnessView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+        init(context, attrs, defStyleAttr, defStyleRes);
+    }
 
-  private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-    inflate(context, R.layout.brightness_settings, this);
+    private void init(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        inflate(context, R.layout.brightness_settings, this);
 
-    ButterKnife.inject(this);
-  }
+        ButterKnife.bind(this);
+    }
 
-  @Override
-  public void onActionViewExpanded() {
-    mSeekBar.setVisibility(View.VISIBLE);
-  }
+    @Override
+    public void onActionViewExpanded() {
+        mSeekBar.setVisibility(View.VISIBLE);
+    }
 
-  @Override
-  public void onActionViewCollapsed() {
-    mSeekBar.setVisibility(View.GONE);
-  }
+    @Override
+    public void onActionViewCollapsed() {
+        mSeekBar.setVisibility(View.GONE);
+    }
 }

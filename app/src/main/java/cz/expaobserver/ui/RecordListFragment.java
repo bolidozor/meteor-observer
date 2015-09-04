@@ -32,178 +32,179 @@ import cz.expaobserver.util.Util;
  */
 public class RecordListFragment extends ListFragment {
 
-  private RecordStore mRecordStore;
-  private List<Record> mRecordsList;
+    private RecordStore mRecordStore;
+    private List<Record> mRecordsList;
 
-  private SelectableArrayAdapter mAdapter;
+    private SelectableArrayAdapter mAdapter;
 
-  public static RecordListFragment newInstance() {
-    return new RecordListFragment();
-  }
-
-  public RecordListFragment() {
-  }
-
-  @Override
-  public void onAttach(Activity activity) {
-    super.onAttach(activity);
-
-    if (mRecordStore == null) {
-      mRecordStore = ((ObserverApplication) getActivity().getApplication()).getRecordStore();
+    public static RecordListFragment newInstance() {
+        return new RecordListFragment();
     }
 
-    mRecordsList = mRecordStore.getAllRecords();
-  }
+    public RecordListFragment() {
+    }
 
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
 
-    setHasOptionsMenu(true);
-  }
+        if (mRecordStore == null) {
+            mRecordStore = ((ObserverApplication) getActivity().getApplication()).getRecordStore();
+        }
 
-  @Override
-  public void onViewCreated(View view, Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
+        mRecordsList = mRecordStore.getAllRecords();
+    }
 
-    mAdapter = new SelectableArrayAdapter(getActivity(), mRecordsList);
-    setListAdapter(mAdapter);
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-    setEmptyText(getString(R.string.mo_empty_list));
+        setHasOptionsMenu(true);
+    }
 
-  }
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-  @Override
-  public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-    super.onCreateOptionsMenu(menu, inflater);
+        mAdapter = new SelectableArrayAdapter(getActivity(), mRecordsList);
+        setListAdapter(mAdapter);
 
-    inflater.inflate(R.menu.record_list_actions, menu);
+        setEmptyText(getString(R.string.mo_empty_list));
 
-    Util.Material.tintMenu(menu, getActivity());
-  }
+    }
 
-  @Override
-  public boolean onOptionsItemSelected(MenuItem item) {
-    switch (item.getItemId()) {
-      case R.id.delete_selected:
-        mRecordStore.deleteRecordsById(mAdapter.selectedIds);
-        // TODO
-        mRecordsList.clear();
-        mRecordsList.addAll(mRecordStore.getAllRecords());
-        mAdapter.selectedIds.clear();
-        mAdapter.notifyDataSetChanged();
-        return true;
-      case R.id.upload_selected:
-        List<Record> records = mAdapter.getSelectedRecords();
-        UploadRecordsTask.Listener listener = new UploadRecordsTask.Listener() {
-          public void onFinish() {
-            // TODO
-            mRecordsList.clear();
-            mRecordsList.addAll(mRecordStore.getAllRecords());
-            mAdapter.selectedIds.clear();
-            mAdapter.notifyDataSetChanged();
-          }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
 
-          ;
-        };
+        inflater.inflate(R.menu.record_list_actions, menu);
 
-        new UploadRecordsTask(getActivity(), listener, records).execute();
+        // TODO tint with toolbar context
+        Util.Material.tintMenu(menu, getActivity());
+    }
 
-        return true;
-      case R.id.add_note_to_selected:
-        AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
-        alert.setTitle(getResources().getString(R.string.mo_note));
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.delete_selected:
+                mRecordStore.deleteRecordsById(mAdapter.selectedIds);
+                // TODO
+                mRecordsList.clear();
+                mRecordsList.addAll(mRecordStore.getAllRecords());
+                mAdapter.selectedIds.clear();
+                mAdapter.notifyDataSetChanged();
+                return true;
+            case R.id.upload_selected:
+                List<Record> records = mAdapter.getSelectedRecords();
+                UploadRecordsTask.Listener listener = new UploadRecordsTask.Listener() {
+                    public void onFinish() {
+                        // TODO
+                        mRecordsList.clear();
+                        mRecordsList.addAll(mRecordStore.getAllRecords());
+                        mAdapter.selectedIds.clear();
+                        mAdapter.notifyDataSetChanged();
+                    }
 
-        final EditText input = new EditText(getActivity());
-        alert.setView(input);
-        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-          public void onClick(DialogInterface dialog, int whichButton) {
-            List<Record> records = mAdapter.getSelectedRecords();
-            String note = input.getText().toString();
+                    ;
+                };
 
-            for (Record record : records) {
-              record.note = note;
-              mRecordStore.updateRecord(record);
+                new UploadRecordsTask(getActivity(), listener, records).execute();
+
+                return true;
+            case R.id.add_note_to_selected:
+                AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+                alert.setTitle(getResources().getString(R.string.mo_note));
+
+                final EditText input = new EditText(getActivity());
+                alert.setView(input);
+                alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        List<Record> records = mAdapter.getSelectedRecords();
+                        String note = input.getText().toString();
+
+                        for (Record record : records) {
+                            record.note = note;
+                            mRecordStore.updateRecord(record);
+                        }
+
+                        mAdapter.notifyDataSetChanged();
+                    }
+                });
+
+                alert.show();
+
+                return true;
+            case R.id.select_all:
+                for (Record record : mRecordsList) {
+                    mAdapter.setSelected(record, true);
+                }
+                mAdapter.notifyDataSetChanged();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private static class SelectableArrayAdapter extends ArrayAdapter<Record> implements
+        CompoundButton.OnCheckedChangeListener {
+        private final List<Record> list;
+        private final TreeSet<Long> selectedIds;
+        private final Activity context;
+
+        public SelectableArrayAdapter(Activity context, List<Record> list) {
+            super(context, R.layout.record_entry, list);
+            this.context = context;
+            this.list = list;
+            this.selectedIds = new TreeSet<Long>();
+        }
+
+        public long getItemId(int position) {
+            return getItem(position).id;
+        }
+
+        public void setSelected(Record record, boolean isSelected) {
+            if (isSelected)
+                selectedIds.add(record.id);
+            else
+                selectedIds.remove(record.id);
+        }
+
+        public boolean isSelected(Record record) {
+            return selectedIds.contains(record.id);
+        }
+
+        public List<Record> getSelectedRecords() {
+            List<Record> records = new ArrayList<Record>();
+
+            for (Record record : list) {
+                if (selectedIds.contains(record.id))
+                    records.add(record);
             }
 
-            mAdapter.notifyDataSetChanged();
-          }
-        });
-
-        alert.show();
-
-        return true;
-      case R.id.select_all:
-        for (Record record : mRecordsList) {
-          mAdapter.setSelected(record, true);
+            return records;
         }
-        mAdapter.notifyDataSetChanged();
-        return true;
-      default:
-        return super.onOptionsItemSelected(item);
+
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View v = convertView;
+
+            if (v == null) {
+                LayoutInflater inflater = context.getLayoutInflater();
+                v = inflater.inflate(R.layout.record_entry, parent, false);
+                ((CheckBox) v.findViewById(R.id.check)).setOnCheckedChangeListener(this);
+            }
+
+            Record record = list.get(position);
+
+            ((TextView) v.findViewById(R.id.desc)).setText(record.toString());
+            CheckBox checkbox = (CheckBox) v.findViewById(R.id.check);
+            checkbox.setTag(record);
+            checkbox.setChecked(isSelected(record));
+
+            return v;
+        }
+
+        public void onCheckedChanged(CompoundButton view, boolean isChecked) {
+            setSelected((Record) view.getTag(), isChecked);
+        }
     }
-  }
-
-  private static class SelectableArrayAdapter extends ArrayAdapter<Record> implements
-      CompoundButton.OnCheckedChangeListener {
-    private final List<Record> list;
-    private final TreeSet<Long> selectedIds;
-    private final Activity context;
-
-    public SelectableArrayAdapter(Activity context, List<Record> list) {
-      super(context, R.layout.record_entry, list);
-      this.context = context;
-      this.list = list;
-      this.selectedIds = new TreeSet<Long>();
-    }
-
-    public long getItemId(int position) {
-      return getItem(position).id;
-    }
-
-    public void setSelected(Record record, boolean isSelected) {
-      if (isSelected)
-        selectedIds.add(record.id);
-      else
-        selectedIds.remove(record.id);
-    }
-
-    public boolean isSelected(Record record) {
-      return selectedIds.contains(record.id);
-    }
-
-    public List<Record> getSelectedRecords() {
-      List<Record> records = new ArrayList<Record>();
-
-      for (Record record : list) {
-        if (selectedIds.contains(record.id))
-          records.add(record);
-      }
-
-      return records;
-    }
-
-    public View getView(int position, View convertView, ViewGroup parent) {
-      View v = convertView;
-
-      if (v == null) {
-        LayoutInflater inflater = context.getLayoutInflater();
-        v = inflater.inflate(R.layout.record_entry, parent, false);
-        ((CheckBox) v.findViewById(R.id.check)).setOnCheckedChangeListener(this);
-      }
-
-      Record record = list.get(position);
-
-      ((TextView) v.findViewById(R.id.desc)).setText(record.toString());
-      CheckBox checkbox = (CheckBox) v.findViewById(R.id.check);
-      checkbox.setTag(record);
-      checkbox.setChecked(isSelected(record));
-
-      return v;
-    }
-
-    public void onCheckedChanged(CompoundButton view, boolean isChecked) {
-      setSelected((Record) view.getTag(), isChecked);
-    }
-  }
 }
