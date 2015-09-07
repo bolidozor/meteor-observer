@@ -179,17 +179,17 @@ public class ObserverActivity extends AppCompatActivity implements ObserverFragm
     }
 
     @Override
-    public void onStateChanged(ObserverFragment.State state) {
+    public void onStateChanged(@ObserverFragment.TrailMeasureState int state) {
         switch (state) {
-            case IDLE:
+            case ObserverFragment.TrailMeasureState.IDLE:
                 mInstructionsText.setText(getString(R.string.mo_instruction_init));
                 break;
 
-            case TRAIL_BEG:
+            case ObserverFragment.TrailMeasureState.TRAIL_START:
                 mInstructionsText.setText(getString(R.string.mo_instruction_point_to_start));
                 break;
 
-            case TRAIL_END:
+            case ObserverFragment.TrailMeasureState.TRAIL_END:
                 mInstructionsText.setText(getString(R.string.mo_instruction_point_to_end));
                 break;
         }
