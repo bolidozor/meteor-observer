@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -40,6 +41,13 @@ public class ObserverActivity extends AppCompatActivity implements ObserverFragm
     @Bind(R.id.ori)
     TextView mOrientationText;
 
+    @Bind(R.id.toolbar)
+    Toolbar mToolbar;
+
+//    private SensorManager mSensorManager;
+//    private Sensor mLightSensor;
+    private boolean mIntentNeedsConfirmation = true;
+
     private final Handler mHandler = new Handler();
     private final Runnable mDelayedDim = new Runnable() {
         @Override
@@ -58,6 +66,7 @@ public class ObserverActivity extends AppCompatActivity implements ObserverFragm
 
         setContentView(R.layout.activity_observer);
         ButterKnife.bind(this);
+        setSupportActionBar(mToolbar);
 
 //    ActionBar ab = getSupportActionBar();
 //    ab.setDisplayHomeAsUpEnabled(false);
@@ -66,9 +75,19 @@ public class ObserverActivity extends AppCompatActivity implements ObserverFragm
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().add(ObserverFragment.newInstance(), ObserverFragment.TAG).commit();
         }
+
+//        mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
+//        mLightSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+//        if (mLightSensor == null) {
+//            Timber.d("No light sensor available.");
+//        }
     }
 
     protected void onPause() {
+//        if (mLightSensor != null) {
+//            mSensorManager.unregisterListener(this);
+//        }
+
         super.onPause();
     }
 
@@ -76,6 +95,10 @@ public class ObserverActivity extends AppCompatActivity implements ObserverFragm
         super.onResume();
 
         dimSystemUi();
+
+//        if (mLightSensor != null) {
+//            mSensorManager.registerListener(this, mLightSensor, SensorManager.SENSOR_DELAY_FASTEST);
+//        }
     }
 
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
@@ -192,11 +215,37 @@ public class ObserverActivity extends AppCompatActivity implements ObserverFragm
 
     @Override
     public void startActivity(final Intent intent) {
-        ConfirmIntentDialogFragment.validateIntent(this, intent);
+        if (mIntentNeedsConfirmation) {
+            ConfirmIntentDialogFragment.validateIntent(this, intent);
+        } else {
+            superStartActivity(intent);
+        }
     }
 
     @Override
     public void superStartActivity(final Intent intent) {
         super.startActivity(intent);
     }
+
+//    @Override
+//    public void onSensorChanged(final SensorEvent event) {
+//        Timber.d("timestamp=" + event.timestamp + ", values=" + printArray(event.values));
+//    }
+//
+//    @Override
+//    public void onAccuracyChanged(final Sensor sensor, final int accuracy) {
+//        Timber.d("accuracy=" + accuracy);
+//    }
+//
+//    private static String printArray(float[] array) {
+//        String out = "[";
+//        if (array.length > 0) {
+//            out += array[0];
+//        }
+//        for (int i = 1; i < array.length; i++) {
+//            out += ", " + array[i];
+//        }
+//        out += "]";
+//        return out;
+//    }
 }

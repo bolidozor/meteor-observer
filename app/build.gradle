@@ -78,8 +78,9 @@ android {
 dependencies {
     compile "com.android.support:appcompat-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
     compile "com.android.support:preference-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
-//  compile 'net.xpece.android:commons:0.3.5'
+//  compile 'net.xpece.android:commons:0.3.6'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'net.danlew:android.joda:2.8.2'
     compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton.timber:timber:3.1.0'
 }

@@ -14,6 +14,8 @@ import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -37,7 +39,7 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
         }
 
         @Override
-        public void onStateChanged(State state) {
+        public void onStateChanged(@TrailMeasureState int state) {
 //
         }
 
@@ -58,7 +60,7 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
 
     private Location mLastLocation = null;
     private long mLastUpdate = -1;
-    private State mState;
+    private @TrailMeasureState int mState;
     private Record mCurrentRecord;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -104,7 +106,7 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
         accHistory = new LinkedList<>();
         mCurrentRecord = new Record();
 
-        changeState(State.IDLE);
+        changeState(TrailMeasureState.IDLE);
     }
 
     @Override
@@ -129,7 +131,7 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
         accHistory = new LinkedList<>();
         mCurrentRecord = new Record();
 
-        changeState(State.IDLE);
+        changeState(TrailMeasureState.IDLE);
 
         mSensorManager.registerListener(this, mAccelerometer, SensorManager.SENSOR_DELAY_UI);
         mSensorManager.registerListener(this, mMagnetometer, SensorManager.SENSOR_DELAY_UI);
@@ -145,7 +147,7 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
         super.onStop();
     }
 
-    public void changeState(State state) {
+    public void changeState(@TrailMeasureState int state) {
         this.mState = state;
 
         mCallbacks.onStateChanged(state);
@@ -247,7 +249,7 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
         float deviation = historyDeviation(oriHistory);
 
         switch (mState) {
-            case IDLE:
+            case TrailMeasureState.IDLE: {
                 Vector3 a = new Vector3(accHistory.getFirst());
                 Vector3 b = new Vector3(accHistory.getLast());
                 a.normalize();
@@ -262,31 +264,32 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
                         mCurrentRecord.locLong = mLastLocation.getLongitude();
                     }
 
-                    changeState(State.TRAIL_BEG);
+                    changeState(TrailMeasureState.TRAIL_START);
                     mToneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, TONE_DURATION);
                     mLastUpdate = now;
                 }
                 break;
-
-            case TRAIL_BEG:
+            }
+            case TrailMeasureState.TRAIL_START: {
                 if (deviation < 0.05 && (now - mLastUpdate) > 2000) {
                     mCurrentRecord.trailBeg = recentAverage(oriHistory, now - DELTA2);
-                    changeState(State.TRAIL_END);
+                    changeState(TrailMeasureState.TRAIL_END);
                     mToneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP, TONE_DURATION);
                     mLastUpdate = now;
                 }
                 break;
-
-            case TRAIL_END:
+            }
+            case TrailMeasureState.TRAIL_END: {
                 if (deviation < 0.05 && (now - mLastUpdate) > 2000) {
                     mCurrentRecord.trailEnd = recentAverage(oriHistory, now - DELTA2);
-                    changeState(State.IDLE);
+                    changeState(TrailMeasureState.IDLE);
                     mToneGenerator.startTone(ToneGenerator.TONE_PROP_ACK, TONE_DURATION);
                     mLastUpdate = now;
                     mRecordStore.addRecord(mCurrentRecord);
                     mCurrentRecord = new Record();
                 }
                 break;
+            }
         }
     }
 
@@ -342,14 +345,17 @@ public class ObserverFragment extends Fragment implements SensorEventListener,
         return avg;
     }
 
-    public enum State {
-        IDLE, TRAIL_BEG, TRAIL_END
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface TrailMeasureState {
+        int IDLE = 0;
+        int TRAIL_START = 1;
+        int TRAIL_END = 2;
     }
 
     public interface Callbacks {
         public void onLocationChanged(Location location);
 
-        public void onStateChanged(State state);
+        public void onStateChanged(@TrailMeasureState int state);
 
         public void onTimeChanged(long time);
 
