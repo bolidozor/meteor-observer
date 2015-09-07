@@ -69,7 +69,7 @@ public class ConfirmIntentDialogFragment extends DialogFragment {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE: {
                         Intent i = new Intent(mIntent);
-                        i.putExtra(EXTRA_INTENT_CONFIRMED, EXTRA_INTENT_CONFIRMED);
+                        i.putExtra(EXTRA_INTENT_CONFIRMED, "");
                         startActivity(i);
                         break;
                     }
