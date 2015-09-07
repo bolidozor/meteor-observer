@@ -31,5 +31,5 @@
     <string name="pref_upload_server_id_key" translatable="false">pref_upload_server</string>
     <string name="pref_upload_server_title">Upload server address</string>
 
-    <string name="mo_confirm_intent_message">Other apps may have brighter themes. Do you want to leave this app now?</string>
+    <string name="mo_confirm_intent_message">Other apps may have brighter themes. Do you want to leave Expa Observer now?</string>
 </resources>

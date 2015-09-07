@@ -28,5 +28,5 @@
     <string name="pref_observer_id_summary">Krátký text odeslaný s každým hlášením</string>
     <string name="pref_upload_server_title">Adresa serveru</string>
 
-    <string name="mo_confirm_intent_message">Jiné aplikace mohou mít světlejší barvy. Chcete teď opustit aplikaci?</string>
+    <string name="mo_confirm_intent_message">Jiné aplikace mohou mít světlejší barvy. Chcete teď opustit Expa Observer?</string>
 </resources>

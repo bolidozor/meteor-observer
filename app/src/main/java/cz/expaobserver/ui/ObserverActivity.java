@@ -22,12 +22,13 @@ import java.util.Locale;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cz.expaobserver.R;
+import cz.expaobserver.background.ObserverLogic;
 import cz.expaobserver.model.Vector3;
 import cz.expaobserver.util.ActivityUtils;
 import cz.expaobserver.util.DateUtils;
 import cz.expaobserver.util.Util;
 
-public class ObserverActivity extends AppCompatActivity implements ObserverFragment.Callbacks,
+public class ObserverActivity extends AppCompatActivity implements ObserverLogic.Callbacks,
     ConfirmIntentDialogFragment.ConfirmIntentClient {
 
     private static final long DELAY_DIM = 2000;
@@ -179,17 +180,17 @@ public class ObserverActivity extends AppCompatActivity implements ObserverFragm
     }
 
     @Override
-    public void onStateChanged(@ObserverFragment.TrailMeasureState int state) {
+    public void onStateChanged(@ObserverLogic.TrailMeasureState int state) {
         switch (state) {
-            case ObserverFragment.TrailMeasureState.IDLE:
+            case ObserverLogic.TrailMeasureState.IDLE:
                 mInstructionsText.setText(getString(R.string.mo_instruction_init));
                 break;
 
-            case ObserverFragment.TrailMeasureState.TRAIL_START:
+            case ObserverLogic.TrailMeasureState.TRAIL_START:
                 mInstructionsText.setText(getString(R.string.mo_instruction_point_to_start));
                 break;
 
-            case ObserverFragment.TrailMeasureState.TRAIL_END:
+            case ObserverLogic.TrailMeasureState.TRAIL_END:
                 mInstructionsText.setText(getString(R.string.mo_instruction_point_to_end));
                 break;
         }
