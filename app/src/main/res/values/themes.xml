@@ -36,6 +36,9 @@
 
         <item name="alertDialogTheme">@style/Theme.MeteorObserver.Red.Dialog.Alert</item>
 
+        <item name="popupMenuStyle">@style/Widget.MeteorObserver.PopupMenu</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.MeteorObserver.PopupMenu.Overflow</item>
+
         <item name="actionBarStyle">@style/Widget.AppCompat.ActionBar</item>
     </style>
 
@@ -66,7 +69,10 @@
         <item name="android:textColorTertiary">@color/material_red_a700</item>
 
         <item name="android:windowBackground">@drawable/dialog_background_red</item>
-        <item name="android:colorBackground">@color/material_grey_900</item>
+        <item name="android:colorBackground">@android:color/black</item>
+
+        <item name="popupMenuStyle">@style/Widget.MeteorObserver.PopupMenu</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.MeteorObserver.PopupMenu.Overflow</item>
 
         <item name="textAppearanceListItemSecondary">@style/TextAppearance.AppCompat.Body1</item>
         <item name="listPreferredItemHeight">56dp</item>

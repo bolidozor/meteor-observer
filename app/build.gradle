@@ -21,7 +21,7 @@ android {
         // SS-XX-YY-ZZ, S: minSdk, X: major, Y: minor, Z: build
         versionCode 10100
         versionName "1.1.0"
-        resConfigs "cs", "en"
+//        resConfigs "cs", "en"
         resConfigs "nodpi", "mdpi", "hdpi", "xhdpi", "xxhdpi"
     }
 

@@ -3,4 +3,12 @@
     <style name="Widget.MeteorObserver.ActionBar.Solid" parent="Widget.AppCompat.ActionBar.Solid">
         <item name="elevation">4dp</item>
     </style>
+
+    <style name="Widget.MeteorObserver.PopupMenu" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:popupBackground">@drawable/dialog_background_red</item>
+    </style>
+
+    <style name="Widget.MeteorObserver.PopupMenu.Overflow" parent="Widget.AppCompat.PopupMenu.Overflow">
+        <item name="android:popupBackground">@drawable/dialog_background_red</item>
+    </style>
 </resources>
