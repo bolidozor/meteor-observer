@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="Base.Theme.MeteorObserver" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/material_red_500</item>
+        <item name="android:textColorHighlight">@color/mo_text_highlight</item>
+
+        <item name="alertDialogTheme">@style/Theme.MeteorObserver.Dialog.Alert</item>
+
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.Material</item>
+        <item name="preferenceTint">?colorAccent</item>
+
+        <item name="actionBarStyle">@style/Widget.MeteorObserver.ActionBar.Solid</item>
+
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="listPreferredItemHeight">56dp</item>
+        <item name="listPreferredItemHeightLarge">72dp</item>
+    </style>
+
+    <style name="Theme.MeteorObserver" parent="Base.Theme.MeteorObserver">
+    </style>
+
+    <style name="Theme.MeteorObserver.Red">
+        <item name="colorPrimary">@android:color/black</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorAccent">@color/material_red_a700</item>
+        <item name="colorControlHighlight">@color/mo_ripple</item>
+        <item name="android:textColorHighlight">@color/mo_text_highlight</item>
+
+        <item name="android:textColorPrimary">@color/material_red_a700</item>
+        <item name="android:textColorSecondary">@color/material_red_a700</item>
+        <item name="android:textColorTertiary">@color/material_red_a700</item>
+
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:colorBackground">@color/material_grey_900</item>
+
+        <item name="alertDialogTheme">@style/Theme.MeteorObserver.Red.Dialog.Alert</item>
+
+        <item name="popupMenuStyle">@style/Widget.MeteorObserver.PopupMenu</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.MeteorObserver.PopupMenu.Overflow</item>
+
+        <item name="actionBarStyle">@style/Widget.AppCompat.ActionBar</item>
+    </style>
+
+    <style name="Theme.MeteorObserver.Red.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.MeteorObserver.Dialog.Alert" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">@color/material_red_500</item>
+        <item name="android:textColorHighlight">@color/mo_text_highlight</item>
+
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="listPreferredItemHeight">56dp</item>
+        <item name="listPreferredItemHeightLarge">72dp</item>
+    </style>
+
+    <style name="Theme.MeteorObserver.Red.Dialog.Alert" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorPrimary">@android:color/black</item>
+        <item name="colorPrimaryDark">@android:color/black</item>
+        <item name="colorAccent">@color/material_red_a700</item>
+
+        <item name="colorControlHighlight">@color/mo_ripple</item>
+        <item name="android:textColorHighlight">@color/mo_text_highlight</item>
+
+        <item name="android:textColorPrimary">@color/material_red_a700</item>
+        <item name="android:textColorSecondary">@color/material_red_a700</item>
+        <item name="android:textColorTertiary">@color/material_red_a700</item>
+
+        <item name="android:windowBackground">@drawable/dialog_background_red</item>
+        <item name="android:colorBackground">@android:color/black</item>
+
+        <item name="popupMenuStyle">@style/Widget.MeteorObserver.PopupMenu</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.MeteorObserver.PopupMenu.Overflow</item>
+
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.AppCompat.Body1</item>
+        <item name="listPreferredItemHeight">56dp</item>
+        <item name="listPreferredItemHeightLarge">72dp</item>
+    </style>
+</resources>

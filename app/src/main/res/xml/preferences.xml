@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference
+        android:key="@string/pref_observer_id_key"
+        android:summary="@string/pref_observer_id_summary"
+        android:title="@string/pref_observer_id_title"/>
+    <EditTextPreference
+        android:defaultValue="http://meteor1.astrozor.cz:3003/report"
+        android:key="@string/pref_upload_server_id_key"
+        android:title="@string/pref_upload_server_title"/>
+</PreferenceScreen>

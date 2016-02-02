@@ -1,0 +1,75 @@
+# To enable ProGuard in your project, edit project.properties
+# to define the proguard.config property as described in that file.
+#
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in ${sdk.dir}/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the ProGuard
+# include property in project.properties.
+#
+# For more details, see
+#   http://developer.android.com/guide/developing/tools/proguard.html
+
+# Add any project specific keep options here:
+
+# If your project uses WebView with JS, uncomment the following
+# and specify the fully qualified class name to the JavaScript interface
+# class:
+#-keepclassmembers class fqcn.of.javascript.interface.for.webview {
+#   public *;
+#}
+
+# JodaTime
+-dontwarn org.joda.convert.FromString
+-dontwarn org.joda.convert.ToString
+-dontwarn org.joda.time.**
+-keep class org.joda.time.** { *; }
+-keep interface org.joda.time.** { *; }
+
+# Butter Knife
+-keep class butterknife.** { *; }
+-dontwarn butterknife.internal.**
+-keep class **$$ViewBinder { *; }
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <fields>;
+}
+
+-keepclasseswithmembernames class * {
+    @butterknife.* <methods>;
+}
+
+# Android Support Libs
+-keepnames class * extends android.support.design.widget.CoordinatorLayout$Behavior
+-keepclassmembers class * extends android.support.design.widget.CoordinatorLayout$Behavior {
+    public <init>(...);
+}
+-keepnames class * extends android.support.v7.widget.RecyclerView$LayoutManager
+-keepclassmembers class * extends android.support.v7.widget.RecyclerView$LayoutManager {
+    public <init>(...);
+}
+
+# SearchView bug
+-keep class android.support.v7.widget.SearchView { *; }
+
+# OkHttp & Picasso
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn okio.**
+-keep class com.squareup.okhttp.** { *; }
+-dontwarn com.squareup.okhttp.internal.**
+-keep class okhttp3.** { *; }
+-dontwarn okhttp3.internal.**
+-dontwarn com.squareup.picasso.**
+
+# Parceler configuration
+-keep interface org.parceler.Parcel
+-keep @org.parceler.Parcel class * { *; }
+-keep class **$$Parcelable { *; }
+-keep class org.parceler.Parceler$$Parcels
+
+# Otto
+-keepclassmembers class ** {
+    @com.squareup.otto.Subscribe public *;
+    @com.squareup.otto.Produce public *;
+}

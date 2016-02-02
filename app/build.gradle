@@ -1,0 +1,85 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        applicationId "cz.expaobserver"
+        minSdkVersion 9
+        targetSdkVersion 22
+
+        // Min SDKs:
+        // Gingerbread (9 or 10)         -> 0
+        // Ice Cream Sandwich (14 or 15) -> 1
+        // Jellybean (16)                -> 2
+        // Jellybean r2 (17)             -> 3
+        // ???                           -> 4
+        // Lollipop (21)                 -> 5
+        // Marshmallow (23)              -> 6
+
+        // XX-YY-ZZ-S, S: minSdk, X: major, Y: minor, Z: build
+        versionCode 101010
+        versionName "1.1.1"
+    }
+
+    signingConfigs {
+        release {
+            // signing.properties file contains release key information. DO NOT COMMIT TO VCS!!!
+            // signing.properties structure:
+            // STORE_FILE=C:\\Users\\Eugen\\.android\\debug.keystore
+            // STORE_PASSWORD=android
+            // KEY_ALIAS=androiddebugkey
+            // KEY_PASSWORD=android
+
+            def keyPropsFile = file('signing.properties')
+            assert keyPropsFile.exists(), 'No signing.properties file present.'
+
+            def Properties keyProps = new Properties()
+            keyProps.load(new FileInputStream(keyPropsFile))
+
+//      assert keyProps['STORE_FILE'] && keyProps['STORE_PASSWORD'] && keyProps['KEY_ALIAS'] && keyProps['KEY_PASSWORD'], 'Incomplete signing.properties file present.'
+            if (keyProps['STORE_FILE'] && keyProps['STORE_PASSWORD'] && keyProps['KEY_ALIAS'] && keyProps['KEY_PASSWORD']) {
+                storeFile file(keyProps['STORE_FILE'])
+                storePassword keyProps['STORE_PASSWORD']
+                keyAlias keyProps['KEY_ALIAS']
+                keyPassword keyProps['KEY_PASSWORD']
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            versionNameSuffix '-debug'
+        }
+        release {
+            shrinkResources true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-project.txt'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    lintOptions {
+        abortOnError true
+        disable 'InvalidPackage'
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+}
+
+dependencies {
+    compile "com.android.support:appcompat-v7:$supportLibVersion"
+//    compile "com.android.support:preference-v7:$supportLibVersion"
+    compile 'net.xpece.android:support-preference:0.5.3'
+//  compile 'net.xpece.android:commons:0.3.6'
+//    compile 'com.squareup.okhttp3:okhttp:3.0.1'
+    compile 'net.danlew:android.joda:2.9.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.jakewharton.timber:timber:3.1.0'
+}
