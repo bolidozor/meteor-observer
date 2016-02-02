@@ -8,7 +8,9 @@
         <item name="android:textColorHighlight">@color/mo_text_highlight</item>
 
         <item name="alertDialogTheme">@style/Theme.MeteorObserver.Dialog.Alert</item>
-        <item name="preferenceTheme">@style/PreferenceThemeOverlay.Fixed</item>
+
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.Material</item>
+        <item name="preferenceTint">?colorAccent</item>
 
         <item name="actionBarStyle">@style/Widget.MeteorObserver.ActionBar.Solid</item>
 

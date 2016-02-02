@@ -5,7 +5,9 @@ package cz.expaobserver.ui;
 
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
-import android.support.v7.preference.PreferenceFragmentCompat;
+import android.support.v7.preference.XpPreferenceFragment;
+import android.support.v7.widget.PreferenceDividerDecoration;
+import android.support.v7.widget.RecyclerView;
 
 import cz.expaobserver.BuildConfig;
 import cz.expaobserver.R;
@@ -16,7 +18,7 @@ import cz.expaobserver.R;
  * @author pechanecjr
  * @version 0.0.0000 - 5. 9. 2014
  */
-public class SettingsFragment extends PreferenceFragmentCompat {
+public class SettingsFragment extends XpPreferenceFragment {
     public static final String KEY_PREF_OBSERVER_ID = "pref_observer_id";
     public static final String KEY_PREF_UPLOAD_SERVER = "pref_upload_server";
 
@@ -29,7 +31,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     }
 
     @Override
-    public void onCreatePreferences(final Bundle bundle, final String s) {
+    public void onCreatePreferences2(final Bundle bundle, final String s) {
         addPreferencesFromResource(R.xml.preferences);
 
         findPreference(KEY_PREF_UPLOAD_SERVER).setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -45,5 +47,10 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         if (!BuildConfig.DEBUG) {
             getPreferenceScreen().removePreference(findPreference(KEY_PREF_UPLOAD_SERVER));
         }
+    }
+
+    @Override
+    public void onRecyclerViewCreated(RecyclerView list) {
+        list.addItemDecoration(new PreferenceDividerDecoration(getContext()).drawBottom(true));
     }
 }

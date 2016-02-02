@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
-    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "cz.expaobserver"
-        minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
-        targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+        minSdkVersion 9
+        targetSdkVersion 22
 
         // Min SDKs:
-        // Gingerbread (9 or 10)         -> no prefix
+        // Gingerbread (9 or 10)         -> 0
         // Ice Cream Sandwich (14 or 15) -> 1
         // Jellybean (16)                -> 2
         // Jellybean r2 (17)             -> 3
@@ -18,11 +18,9 @@ android {
         // Lollipop (21)                 -> 5
         // Marshmallow (23)              -> 6
 
-        // SS-XX-YY-ZZ, S: minSdk, X: major, Y: minor, Z: build
-        versionCode 10100
-        versionName "1.1.0"
-//        resConfigs "cs", "en"
-        resConfigs "nodpi", "mdpi", "hdpi", "xhdpi", "xxhdpi"
+        // XX-YY-ZZ-S, S: minSdk, X: major, Y: minor, Z: build
+        versionCode 101010
+        versionName "1.1.1"
     }
 
     signingConfigs {
@@ -76,11 +74,12 @@ android {
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
-    compile "com.android.support:preference-v7:${project.ANDROID_SUPPORT_LIBRARY_VERSION}"
+    compile "com.android.support:appcompat-v7:$supportLibVersion"
+//    compile "com.android.support:preference-v7:$supportLibVersion"
+    compile 'net.xpece.android:support-preference:0.5.3'
 //  compile 'net.xpece.android:commons:0.3.6'
-    compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'net.danlew:android.joda:2.8.2'
+//    compile 'com.squareup.okhttp3:okhttp:3.0.1'
+    compile 'net.danlew:android.joda:2.9.1'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.jakewharton.timber:timber:3.1.0'
 }
