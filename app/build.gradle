@@ -2,11 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "cz.expaobserver"
-        minSdkVersion 9
+        minSdkVersion 16
         targetSdkVersion 22
 
         // Min SDKs:
@@ -20,31 +19,35 @@ android {
 
         // XX-YY-ZZ-S, S: minSdk, X: major, Y: minor, Z: build
         versionCode 101010
-        versionName "1.1.1"
+        versionName "1.1.2"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+
     }
 
     signingConfigs {
         release {
-            // signing.properties file contains release key information. DO NOT COMMIT TO VCS!!!
-            // signing.properties structure:
-            // STORE_FILE=C:\\Users\\Eugen\\.android\\debug.keystore
             // STORE_PASSWORD=android
             // KEY_ALIAS=androiddebugkey
             // KEY_PASSWORD=android
 
-            def keyPropsFile = file('signing.properties')
-            assert keyPropsFile.exists(), 'No signing.properties file present.'
+            //def keyPropsFile = file('signing.properties')
+            //assert keyPropsFile.exists(), 'No signing.properties file present.'
 
-            def Properties keyProps = new Properties()
-            keyProps.load(new FileInputStream(keyPropsFile))
+            //def Properties keyProps = new Properties()
+            //keyProps.load(new FileInputStream(keyPropsFile))
 
 //      assert keyProps['STORE_FILE'] && keyProps['STORE_PASSWORD'] && keyProps['KEY_ALIAS'] && keyProps['KEY_PASSWORD'], 'Incomplete signing.properties file present.'
-            if (keyProps['STORE_FILE'] && keyProps['STORE_PASSWORD'] && keyProps['KEY_ALIAS'] && keyProps['KEY_PASSWORD']) {
-                storeFile file(keyProps['STORE_FILE'])
-                storePassword keyProps['STORE_PASSWORD']
-                keyAlias keyProps['KEY_ALIAS']
-                keyPassword keyProps['KEY_PASSWORD']
-            }
+           // if (keyProps['STORE_FILE'] && keyProps['STORE_PASSWORD'] && keyProps['KEY_ALIAS'] && keyProps['KEY_PASSWORD']) {
+           //     storeFile file(keyProps['STORE_FILE'])
+           //     storePassword keyProps['STORE_PASSWORD']
+           //     keyAlias keyProps['KEY_ALIAS']
+           //     keyPassword keyProps['KEY_PASSWORD']
+           // }
         }
     }
 
@@ -71,15 +74,16 @@ android {
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
-    compile "com.android.support:appcompat-v7:$supportLibVersion"
-//    compile "com.android.support:preference-v7:$supportLibVersion"
-    compile 'net.xpece.android:support-preference:0.5.3'
-//  compile 'net.xpece.android:commons:0.3.6'
-//    compile 'com.squareup.okhttp3:okhttp:3.0.1'
-    compile 'net.danlew:android.joda:2.9.1'
-    compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'com.jakewharton.timber:timber:3.1.0'
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
+//    implementation "com.android.support:preference-v7:$supportLibVersion"
+    implementation 'net.xpece.android:support-preference:0.5.3'
+//  implementation 'net.xpece.android:commons:0.3.6'
+//    implementation 'com.squareup.okhttp3:okhttp:3.0.1'
+    implementation 'net.danlew:android.joda:2.9.1'
+    implementation 'com.jakewharton:butterknife:7.0.1'
+    implementation 'com.jakewharton.timber:timber:3.1.0'
 }

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: net.xpece.android:support-preference-0.5.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-preference-0.5.3.aar/0717b2107fadf324eb072ca4fadeaad7/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/support-preference-0.5.3.aar/0717b2107fadf324eb072ca4fadeaad7/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.xpece.android/support-preference/0.5.3/b5461ec56811e1ac2415b6b4a7849f0e43e8fe39/support-preference-0.5.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
